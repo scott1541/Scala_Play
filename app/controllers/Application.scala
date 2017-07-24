@@ -9,4 +9,16 @@ class Application extends Controller {
     Ok(views.html.index("Your new application is ready."))
   }
 
+  def testpage = Action {
+    Ok(views.html.index("Hello World!"))
+  }
+
+  def list = Action {
+    Ok(views.html.test("List"))
+  }
+
+  def show = Action {
+    Ok(views.html.test("show"))
+  }
+
 }
