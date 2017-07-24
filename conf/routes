@@ -5,11 +5,28 @@
 # Home page
 GET     /                           controllers.Application.index
 
-GET     /testpage                   controllers.Application.testpage
+GET     /testpage                   controllers.Application.default(out: String ?= " ")
 
-GET     /test/all
+#Static
+GET     /test/all                   controllers.Application.list()
+
+#Dynamic
+GET     /test/show:id               controllers.Application.show(id: Int)
+
+#Fixed
+GET     /test                       controllers.Application.default(out = "Fixed Value!")
+
+#Default
+GET     /test/default               controllers.Application.default(out: String ?= "Default")
+
+#Simple Redirect
+GET     /test/x                     controllers.Application.redirect()
+
+#Reverse route
+GET     /plannedUpdates             controllers.Application.plannedUpdates()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
 
     
