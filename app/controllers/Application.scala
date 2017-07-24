@@ -43,4 +43,5 @@ class Application extends Controller {
     Ok("Planned updates are in progress!")
   }
 
+  def implement = TODO
 }
