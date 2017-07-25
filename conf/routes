@@ -1,17 +1,16 @@
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
-
 # Home page
 GET     /                           controllers.Application.index
 
 GET     /testpage                   controllers.Application.default(out: String ?= " ")
 
 #Static
-GET     /test/all                   controllers.Application.list()
+GET     /test/all                   controllers.Application.list
 
 #Dynamic
-GET     /test/show:id               controllers.Application.show(id: Int)
+GET     /test/show/id               controllers.Application.show(id: Int)
 
 #Fixed
 GET     /test                       controllers.Application.default(out = "Fixed Value!")
@@ -20,13 +19,28 @@ GET     /test                       controllers.Application.default(out = "Fixed
 GET     /test/default               controllers.Application.default(out: String ?= "Default")
 
 #Simple Redirect
-GET     /test/x                     controllers.Application.redirect()
+GET     /test/x                     controllers.Application.redirect
 
 #Reverse route
-GET     /plannedUpdates             controllers.Application.plannedUpdates()
+GET     /plannedUpdates             controllers.Application.plannedUpdates
 
+#Same routes
+GET     /test/same                  controllers.Application.sameO
+GET     /test/same                  controllers.Application.same
 #TODO
-GET     /test/implement             controllers.Application.implement()
+GET     /test/todo                  controllers.Application.implement
+
+#Cookies
+GET     /test/cookieboys            controllers.Application.cookie
+GET     /test/cookiechange          controllers.Application.cookieChange
+GET     /test/connected             controllers.Application.connected
+
+#Flash
+GET     /test/flash                 controllers.Application.flash
+GET     /misc/fl                    controllers.Application.flashr
+
+GET     /test/logout                controllers.Application.delCookie
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

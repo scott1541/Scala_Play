@@ -39,8 +39,41 @@ class Application extends Controller {
     Redirect(routes.Application.plannedUpdates())
   }
 
+  def same = Action {
+    Ok(views.html.test("First Route"))
+  }
+  def sameO = Action {
+    Ok(views.html.test("Second Route"))
+  }
+
   def plannedUpdates = Action {
     Ok("Planned updates are in progress!")
+  }
+
+  def cookie = Action {
+    Ok("Hello John").withSession("connected" -> "john@gmail.com")
+  }
+  def cookieChange = Action {request =>
+    Ok("Change cookie").withSession(request.session + ("saidhello" -> "yes"))
+  }
+
+  def connected = Action {
+    {request => request.session.get("connected").map {user =>
+      Ok("Hello  " + user)}.getOrElse(Unauthorized("not authorised"))}
+  }
+  def delCookie = Action {
+    Ok("Logout").withNewSession
+  }
+  def dumpCookie = TODO/*Action {
+    {request => request.session.get("connected").foreach(item => item) }
+  }*/
+
+  def flash = Action {
+    Redirect("/misc/fl").flashing("success" -> "Flash created")
+  }
+
+  def flashr = Action {
+    Ok("Hello John")
   }
 
   def implement = TODO
