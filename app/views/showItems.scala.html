@@ -1,0 +1,76 @@
+@(items: Seq[Item], form: Form[Item])(implicit messages: Messages)
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Show & Add Items</title>
+            <!-- Bootstrap core CSS -->
+        <link href="@routes.Assets.at("stylesheets/bootstrap.min.css")" rel="stylesheet">
+        <style> /* copied from bootstrap-starter template */
+        body { padding-top: 50px; }
+        .help-inline  { color:#953333!important; }
+        input:out-of-range { border:2px solid red; }
+        </style>
+    </head>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="localhost:9000/items">Curlyboys Inc</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="localhost:9000/items">Home</a></li>
+                        <li><a href="items/del">Delete Item</a></li>
+                        <li><a href="items/edit">Edit Item</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+        <div class="container">
+            <div class="table-template">
+                @main("Items"){
+
+                <h1>Items</h1>
+                    <hr/>
+                <table>
+                    <thread>
+                        <tr><th>Name</th><th>Desc</th><th>Price</th><th>Warranty</th><th>Discount</th><th>Seller</th>
+                    </thread>
+                    <tbody>
+                        @for(item <- items){
+                            <tr><td>@item.name</td><td>@item.desc</td><td>@item.price</td><td>@item.warranty</td>
+                                <td>@item.discount</td><td>@item.seller</td></tr>}
+                    </tbody>
+                </table>
+
+                <hr/>
+
+                @helper.form(routes.ItemApp.createItem()) {
+                    @helper.inputText(form("name"), 'id -> "SomeId", 'class -> "SomeClass")
+                    @helper.inputText(form("desc"))
+                    @helper.inputText(form("price"))
+                    @helper.inputText(form("warranty"))
+                    @helper.inputText(form("discount"))
+                    @helper.inputText(form("seller"))
+                    <button type="submit">Create Item</button>
+                }}
+            </div>
+        </div><!-- /.container -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>
+    </body>
+</html>

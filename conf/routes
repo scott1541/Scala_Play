@@ -41,6 +41,10 @@ GET     /misc/fl                    controllers.Application.flashr
 
 GET     /test/logout                controllers.Application.delCookie
 
+GET     /items                      controllers.ItemApp.listItems
+POST    /items                      controllers.ItemApp.createItem
+GET     /items/del                  controllers.ItemApp.deleteItem
+GET     /items/edit                 controllers.ItemApp.editItem
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

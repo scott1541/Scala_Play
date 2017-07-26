@@ -31,10 +31,6 @@ class Application extends Controller {
     Ok(views.html.test("ID number: " + id))
   }
 
-  //def redirect = Action {
-    //Redirect("/test/all")
-  //}
-
   def redirect = Action {
     Redirect(routes.Application.plannedUpdates())
   }
