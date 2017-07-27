@@ -1,7 +1,7 @@
 package controllers
 
 import javax.inject.Inject
-
+//import controllers.MongoApplicationController._
 import models.{Item, ItemDelete}
 import play.api._
 import play.api.mvc._
@@ -26,8 +26,8 @@ class ItemApp @Inject()(val messagesApi: MessagesApi) extends Controller with I1
       val formValidationResult = Item.createItemForm.bindFromRequest
       formValidationResult.fold({ formWithErrors =>
         BadRequest(views.html.showItems(Item.items, formWithErrors))
-      }, { item =>
-         Item.items.append(item)
+      }, { item => //MongoApplicationController.create(item)
+         //Item.items.append(item)
          Redirect(routes.ItemApp.listItems)
       })
   }

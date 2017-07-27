@@ -46,6 +46,10 @@ POST    /items                      controllers.ItemApp.createItem
 GET     /items/del                  controllers.ItemApp.deleteItem
 GET     /items/edit                 controllers.ItemApp.editItem
 
+#Mongodb testing
+GET         /createitem        controllers.MongoApplicationController.create
+GET         /finditem/:nm          controllers.MongoApplicationController.findByName(nm: String)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
