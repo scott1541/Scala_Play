@@ -41,11 +41,12 @@
                 @main("Items"){
 
                 <h1>Items</h1>
-
+                    <hr/>
                 <table>
                     <thread>
                         <tr><th>Name</th><th>Desc</th><th>Price</th><th>Warranty</th><th>Discount</th><th>Seller</th>
                     </thread>
+
                     <tbody>
                         @for(item <- items){
                             <tr><td>@item.name</td><td>@item.desc</td><td>@item.price</td><td>@item.warranty</td>
