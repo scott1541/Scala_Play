@@ -17,41 +17,42 @@ class ItemApp @Inject()(val messagesApi: MessagesApi) extends Controller with I1
 
   def listItems = Action {
     implicit request =>
-      Ok(views.html.showItems(Item.items, Item.createItemForm))
+       Ok(views.html.showItems(Item.items, Item.createItemForm))
   }
 
   def createItem = Action {
     implicit request =>
 
       val formValidationResult = Item.createItemForm.bindFromRequest
-    formValidationResult.fold({formWithErrors =>
-      BadRequest(views.html.showItems(Item.items, formWithErrors))
-    }, {item => Item.items.append(item)
-    Redirect(routes.ItemApp.listItems)
-    })
+      formValidationResult.fold({ formWithErrors =>
+        BadRequest(views.html.showItems(Item.items, formWithErrors))
+      }, { item =>
+         Item.items.append(item)
+         Redirect(routes.ItemApp.listItems)
+      })
   }
 
   def deleteItem = Action { implicit request =>
 
-      val formValidationResult = ItemDelete.deleteItemForm.bindFromRequest()
-      formValidationResult.fold({formWithErrors =>
-        BadRequest(views.html.deleteItems(Item.items, Item.createItemForm, formWithErrors))
-      }, { item =>
-        Item.items = Item.items.filter( x => x.name.toLowerCase != item.name)
-        Redirect(routes.ItemApp.deleteItem)})
-      }
+    val formValidationResult = ItemDelete.deleteItemForm.bindFromRequest()
+    formValidationResult.fold({ formWithErrors =>
+      BadRequest(views.html.deleteItems(Item.items, Item.createItemForm, formWithErrors))
+    }, { item =>
+       Item.items = Item.items.filter(x => x.name.toLowerCase != item.name)
+       Redirect(routes.ItemApp.deleteItem)
+    })
+  }
 
 
   def editItem = Action { implicit request =>
 
     val formValidationResult = Item.createItemForm.bindFromRequest
-    formValidationResult.fold({formWithErrors =>
+    formValidationResult.fold({ formWithErrors =>
       BadRequest(views.html.editItems(Item.items, formWithErrors))
-    }, {item =>
-      Item.items = Item.items.filter( x => x.name.toLowerCase != item.name);
+    }, { item =>
+      Item.items = Item.items.filter(x => x.name.toLowerCase != item.name);
       Item.items += item
-      Redirect(routes.ItemApp.editItem)})
+      Redirect(routes.ItemApp.editItem)
+    })
   }
-
-
 }

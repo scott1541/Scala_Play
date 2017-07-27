@@ -32,10 +32,14 @@ object Item {
   )
 
   var items = ArrayBuffer(
-    Item("Fan", "12 inch desk fan", 19.99, "12 months", "10%", "Go To CheapBay Co"),
-    Item("Mug", "Small ceramic mug", 5.99, "6 months", "10%", "Fine Mug Co"),
+    Item("Fan", "12in desk fan", 19.99, "12 months", "10%", "5dayshop"),
+    Item("Mug", "Small mug", 5.99, "6 months", "10%", "Fine Mug Co"),
     Item("Headphones", "Big headphones", 29.99, "12 months", "10%", "Acme Electronics"),
-    Item("Keyboard", "Full size keyboard", 15.99, "12 months", "10%", "Acme Electronics")
+    Item("Keyboard", "Full size Kb", 15.99, "12 months", "10%", "Acme Electronics"),
+    Item("Mouse", "USB mouse", 8.50, "12 months", "10%", "Acme Electronics"),
+    Item("Cutlery Set", "6x of each", 17.95, "n/a", "5%", "Fine Mug Co"),
+    Item("16GB USB Drive", "16GB Flash drive", 25.95, "24 months", "10%", "5dayshop"),
+    Item("HDMI Cable", "2m HDMI Cable", 9.99, "12 months", "7%", "Acme Electronics")
   )
 }
 
@@ -45,5 +49,4 @@ object ItemDelete {
       "name" -> nonEmptyText
     )(ItemDelete.apply)(ItemDelete.unapply)
   )
-
 }
