@@ -46,6 +46,12 @@ POST    /items                      controllers.ItemApp.createItem
 GET     /items/del                  controllers.ItemApp.deleteItem
 GET     /items/edit                 controllers.ItemApp.editItem
 
+#File serve
+GET     /items/pdf                  controllers.ItemApp.fileRename
+GET     /items/pdf2                 controllers.ItemApp.fileServeCL
+GET     /items/pdf3                 controllers.ItemApp.fileAttachment
+GET     /items/chunkedfs            controllers.ItemApp.chunkedFromSource
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
