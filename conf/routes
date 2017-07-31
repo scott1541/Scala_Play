@@ -50,6 +50,7 @@ GET     /items/edit                 controllers.ItemApp.editItem
 GET     /items/pdf                  controllers.ItemApp.fileRename
 GET     /items/pdf2                 controllers.ItemApp.fileServeCL
 GET     /items/pdf3                 controllers.ItemApp.fileAttachment
+GET     /ideas/chunked              controllers.ItemApp.chunked
 GET     /items/chunkedfs            controllers.ItemApp.chunkedFromSource
 
 # Map static resources from the /public folder to the /assets URL path
